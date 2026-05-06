@@ -1,31 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-const NavbarPlaceholder = () => {
-  return (
-    <nav className="w-full border-b border-slate-800 bg-dark-bg/50 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="text-xl font-black text-primary tracking-tighter">
-          HACKERPULSE
-        </Link>
-        <div className="flex gap-6">
-          <Link to="/" className="hover:text-primary transition-colors">Home</Link>
-          <Link to="/bookmarks" className="hover:text-primary transition-colors">Bookmarks</Link>
-          <Link to="/login" className="hover:text-primary transition-colors">Login</Link>
-          <Link to="/register" className="hover:text-primary transition-colors">Register</Link>
-        </div>
-      </div>
-    </nav>
-  );
-};
+import Navbar from '../components/Navbar';
+import Container from '../components/Container';
 
 const AppLayout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <NavbarPlaceholder />
-      <main className="flex-1 flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen flex flex-col bg-dark-bg text-dark-text selection:bg-primary selection:text-white">
+      <Navbar />
+      <main className="flex-1">
         {children}
       </main>
+      <footer className="py-12 border-t border-slate-800 bg-slate-900/30">
+        <Container className="text-center space-y-4">
+          <div className="flex items-center justify-center gap-2">
+            <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+              <span className="text-primary font-bold text-xs">HP</span>
+            </div>
+            <span className="font-black tracking-tighter">HACKERPULSE</span>
+          </div>
+          <p className="text-sm text-slate-500 max-w-xs mx-auto">
+            Your daily dose of tech insights and trending stories from the developer community.
+          </p>
+          <div className="pt-4 text-xs text-slate-600 font-medium">
+            © {new Date().getFullYear()} HackerPulse. Built with Passion.
+          </div>
+        </Container>
+      </footer>
     </div>
   );
 };
