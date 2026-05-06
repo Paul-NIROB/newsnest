@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import MainLayout from './layouts/MainLayout';
-import ProtectedRoute from './components/ProtectedRoute';
+import AppLayout from './layouts/AppLayout';
 
 // Pages
 import Home from './pages/Home';
@@ -13,26 +11,17 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <MainLayout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route 
-              path="/bookmarks" 
-              element={
-                <ProtectedRoute>
-                  <Bookmarks />
-                </ProtectedRoute>
-              } 
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </MainLayout>
-      </Router>
-    </AuthProvider>
+    <Router>
+      <AppLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AppLayout>
+    </Router>
   );
 }
 
